@@ -1,0 +1,17 @@
+<apex:page controller="T1">
+    <apex:form >
+        <apex:pageBlock title="Select an Option">
+            <apex:pageBlockSection >
+                <apex:selectRadio value="{!selectedValue}" layout="pageDirection">
+                    <apex:selectOptions value="{!items}"/>
+                    <apex:actionSupport event="onchange" action="{!processSelection}" rerender="none"/>
+                </apex:selectRadio>
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!processSelection}" value="Submit"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <apex:outputText value="You selected: {!selectedValue}" />
+    </apex:form>
+</apex:page>

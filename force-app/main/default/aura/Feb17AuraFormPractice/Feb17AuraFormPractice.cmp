@@ -1,0 +1,27 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    <lightning:recordViewForm recordId="{!v.recordId}" 
+                              objectApiName="Account">
+        <div class="slds-border_bottom slds-align_absolute-center slds-text-heading_large ">
+            <lightning:outputField 
+                                   fieldName="Name" 
+                                   variant="label-hidden" 
+                                    />
+        </div>
+
+    </lightning:recordViewForm>
+    
+    <lightning:recordEditForm aura:id="myform"
+                              objectApiName="Contact"
+                              onsubmit="{!c.handleSubmit}"
+                              onsuccess="{!c.handleSuccess}">
+        <lightning:inputField fieldName="FirstName"/>
+        <lightning:inputField fieldName="LastName"/>
+        <lightning:inputField fieldName="Title"/>
+        <lightning:inputField fieldName="Phone"/>
+        <lightning:inputField fieldName="Email"/>
+        <div>
+            <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+            <lightning:button type="submit" label="Save Contact" variant="Success"/>
+        </div>
+    </lightning:recordEditForm>
+</aura:component>

@@ -1,0 +1,80 @@
+<apex:page standardController="Opportunity" extensions="Jan17">
+    <apex:form >
+        <apex:pageBlock >
+    
+        <apex:pageBlockTable value="{!oliList}" var="w" id="oliTbl" >
+        
+            <apex:column headerValue="Product">
+                <apex:outputField value="{!w.oli.PricebookEntry.Product2.Name}" rendered="{!!w.isEdit}" />
+                <apex:inputField value="{!w.oli.Product2Id}" rendered="{!w.isEdit}" />
+		    </apex:column>
+        
+            <apex:column headerValue="Quantity">
+                <apex:outputText value="{!w.oli.Quantity}" rendered="{!!w.isEdit}"/>
+                <apex:inputText value="{!w.oli.Quantity}" rendered="{!w.isEdit}"/>
+			</apex:column>
+        
+            <apex:column headerValue="Price">
+                <apex:outputText value="{!w.oli.UnitPrice}" rendered="{!!w.isEdit}"/>
+                <apex:inputText value="{!w.oli.UnitPrice}" rendered="{!w.isEdit}"/>
+			</apex:column>
+        
+            <apex:column headerValue="Action">
+                                <apex:commandButton value="Edit"
+                                    action="{!editRow}"
+                                    reRender="oliTbl"
+                                    rendered="{!!w.isEdit}" >
+                                    <apex:param name="pid" value="{!w.oli.Id}" assignTo="{!rowId}" />
+                                </apex:commandButton>
+ 
+                                <apex:commandButton value="Cancel"
+                                    action="{!cancelRow}"
+                                    reRender="oliTbl"
+                                    rendered="{!w.isEdit}">
+									<apex:param name="pid" value="{!w.oli.Id}" assignTo="{!rowId}" />
+                    			</apex:commandButton>
+
+                                <apex:commandButton value="Delete"
+                                    action="{!deleteRow}"
+                                    reRender="oliTbl"
+                                    rendered="{!!w.isEdit}">
+                                    <apex:param name="pid" value="{!w.oli.Id}" assignTo="{!rowId}" />
+                                </apex:commandButton>
+
+					</apex:column>
+        
+        </apex:pageBlockTable>
+    <br/>
+            
+       <apex:pageBlock id="newForm">
+            
+            <table width="100%" >
+        
+            <tr width="100%">
+                <td width="39%" ><apex:inputField value="{!oppLineItem.Product2Id}" required="false" /></td>
+              	<td width="25%"><apex:inputField value="{!oppLineItem.Quantity}" required="false" /></td>
+              	<td width="45%"><apex:inputField value="{!oppLineItem.UnitPrice}" required="false" /></td>
+               <td width="9%">
+                   <apex:commandButton value="Add New Product" action="{!addRow}" reRender="oliTbl,showQA,newForm" >
+                   		<apex:param value="{!oppLineItem.Product2Id}" assignTo="{!selectedProdct2Id}"/>
+                   </apex:commandButton>
+               </td>
+			</tr>
+        </table>
+            
+            </apex:pageBlock>
+            
+		<apex:outputPanel id="showQA">
+            
+        <b>Total Quantity:</b> {!oppObj.TotalOpportunityQuantity} <br/>
+   	    <b>Total Amount:</b> {!oppObj.Amount}
+            
+    </apex:outputPanel>
+
+    
+    <br/><br/>
+    <apex:commandButton value="Save" action="{!save}" reRender="oliTbl" />
+    
+</apex:pageBlock>
+    </apex:form>
+</apex:page>

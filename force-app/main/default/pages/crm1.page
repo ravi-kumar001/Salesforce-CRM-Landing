@@ -1,0 +1,49 @@
+<apex:page >
+    <table align="center" width="600" border="1" style="margin-top: 20px" cellspacing= "0" colspacing = "0">
+        <tr>
+            <td colspan="5" height="40" align="center">
+                <b>CRM Landing Software Private Limited</b>
+            </td>
+        </tr>
+    
+        <tr  height="60" >
+            <td width="120" align="center">A</td>
+            <td width="120" rowspan="2" align="center">B</td>
+            <td width="240" rowspan="3" colspan="2" align="center">C</td>
+            <td width="120" align="center">D</td>
+        </tr>
+        
+        <tr  height="60" >
+            <td align="center">F</td>
+            <td align="center">E</td>
+        </tr>
+        
+        <tr  height="60" >
+        	<td align="center" colspan="2">G</td>
+            <td align="center" rowspan="3">H</td>
+        </tr>
+        
+        <tr  height="60" >
+        	<td align="center">M</td>
+            <td rowspan="2" align="center">L</td>
+            <td align="center">I</td>
+            <td align="center">J</td>
+        </tr>
+        
+        <tr height="60" >
+        	<td align="center">N</td>
+            <td colspan="2" align="center">K</td>
+        </tr>
+       
+        <tr  height="60" >
+        <td colspan="3" align="center">O</td>
+        <td rowspan="2" align="center">P</td>
+        <td rowspan="2" align="center">Q</td>
+    </tr>
+        
+    <tr height="60">
+        <td  align="center">R</td>
+        <td colspan="2" align="center">S</td>
+        </tr>
+    </table>
+</apex:page>

@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="Feb17AuraDynamicFormHandler" >
+    <aura:attribute name="objectName" type="String" default="Account" />
+     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="fields" type="List" />
+    <lightning:recordViewForm recordId="{!v.recordId}" 
+                              objectApiName="objectName">
+        <div class="slds-border_bottom slds-align_absolute-center slds-text-heading_large ">
+            <lightning:outputField 
+                                   fieldName="Name" 
+                                   variant="label-hidden" 
+                                   />
+        </div>
+        
+    </lightning:recordViewForm>
+    
+    <lightning:recordEditForm>
+        <lightning:card>
+            <aura:iteration items="{!v.fields}" var="fName">
+                <lightning:formattedText class="slds-form-element__static" value="{!fName.label}" />
+               <lightning:inputField fieldName="{!fName.fieldName}" />
+            </aura:iteration>
+        </lightning:card>
+        <div>
+            <lightning:button label="Cancel" onclick="{!c.handleCancel}" />
+            <lightning:button type="submit" label="Save Contact" variant="Success"/>
+        </div>
+    </lightning:recordEditForm>
+</aura:component>

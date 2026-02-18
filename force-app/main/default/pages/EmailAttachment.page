@@ -1,0 +1,43 @@
+<apex:page controller="EmailAttachmentCtrl">
+<apex:form >
+
+<apex:pageBlock title="Attachment">
+
+<apex:commandButton value="Save"
+ onclick="sendBack();return false;"/>
+
+<apex:pageBlockTable value="{!attWrap}" var="a">
+
+<apex:column >
+    <apex:inputCheckbox value="{!a.sel}" styleClass="chk"/>
+    <input type="hidden" value="{!a.att.Id}" class="attId"/>
+</apex:column>
+
+<apex:column >{!a.att.Name}</apex:column>
+
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+
+<script>
+function sendBack(){
+ var attIds='';
+ var boxes=document.querySelectorAll('.chk');
+
+ for(var i=0;i<boxes.length;i++){
+   if(boxes[i].checked){
+     attIds += boxes[i].nextElementSibling.value + ',';
+   }
+ }
+
+ window.opener.location.href =
+ '/apex/SendEmailPage?ids={!$CurrentPage.parameters.ids}'
+ + '&accId={!accId}&att=' + attIds;
+
+ window.close();
+}
+</script>
+
+
+</apex:page>

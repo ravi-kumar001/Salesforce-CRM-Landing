@@ -1,0 +1,100 @@
+<apex:page controller="Jan15">
+
+<apex:form >
+
+    <apex:pageBlock title="Search Accounts">
+        Enter Name :
+        <apex:inputText value="{!name}" />
+        <apex:commandButton value="Search"
+                            action="{!searchAccountList}"
+                            rerender="accountBlock,contactBlock"/>
+    </apex:pageBlock>
+
+    <apex:pageBlock title="Account Details" id="accountBlock">
+            <apex:actionFunction name="setSelectedRow" action="{!loadContacts}" rerender="contactBlock">
+                <apex:param name="firstParam" assignTo="{!selectedId}" value="" />
+            </apex:actionFunction>
+        
+            <apex:pageBlockTable value="{!wrapAccountList}" var="a">
+                <apex:column headerValue="Select">
+                    <input type="radio" name="accountRadio" onclick="setSelectedRow('{!a.Id}')" />
+                </apex:column>
+        
+                <apex:column headerValue="Account Name">
+                    {!a.Name}
+                </apex:column>
+        
+                <apex:column headerValue="Phone">
+                    {!a.Phone}
+                </apex:column>
+            </apex:pageBlockTable>
+	</apex:pageBlock>
+
+
+    <apex:pageBlock title="Related Contacts" id="contactBlock">
+                
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Send Email"
+                        action="{!openEmail}"
+                        rerender="emailPanel"/>
+                
+                    <apex:commandButton value="Print Detail"/>
+</apex:pageBlockButtons>
+                
+                <apex:pageBlockTable value="{!contactWrap}" var="c">
+                
+                        <apex:column headerValue="Select">
+                            <apex:inputCheckbox value="{!c.isSelected}"/>
+</apex:column>
+                        
+                        <apex:column headerValue="First Name">
+                            {!c.con.FirstName}
+</apex:column>
+                        
+                        <apex:column headerValue="Last Name">
+                            {!c.con.LastName}
+</apex:column>
+                        
+                        <apex:column headerValue="Phone">
+                            {!c.con.Phone}
+</apex:column>
+                        
+                        <apex:column headerValue="Email">
+                            {!c.con.Email}
+</apex:column>
+                
+                </apex:pageBlockTable>
+    
+    </apex:pageBlock>
+
+
+    <apex:outputPanel id="emailPanel">
+    
+    	<apex:outputPanel rendered="{!showEmailFrame}">
+            
+          		  <apex:actionFunction name="closeEmailFrameJS"
+                                    action="{!closeEmailFrame}"
+                                    rerender="emailPanel"/>
+    
+            <div style="position:fixed;top:0;left:0;
+            width:100%;height:100%;
+            background:gray);
+            z-index:9999;">
+            
+                <div style="width:70%;margin:5% auto;
+                background:white;padding:10px;">
+                
+                    <iframe width="100%" height="500px"
+                    src="/apex/SendEmailPage?ids={!selectedContactIds}&pid={!selectedId}">
+                    </iframe>
+                
+                </div>
+   		   </div>
+    
+		</apex:outputPanel>
+    
+    </apex:outputPanel>
+
+
+</apex:form>
+</apex:page>

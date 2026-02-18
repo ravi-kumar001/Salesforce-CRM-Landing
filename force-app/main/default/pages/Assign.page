@@ -1,0 +1,28 @@
+<apex:page controller="AssignClass">
+    <apex:form >
+            <apex:pageblock >
+                <apex:pageBlockSection columns="2">
+                        <apex:pageBlockSectionItem >
+                                            Enter Name <apex:inputField value="{!oppSearchObj.name}" required="false" />
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                                            Stage Name <apex:inputField value="{!oppSearchObj.stagename}" required="false"/>
+                        </apex:pageBlockSectionItem>
+                        <apex:pageBlockSectionItem >
+                                            Close Date <apex:inputField value="{!oppSearchObj.closeDate}" required="false"/>
+                        </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                <apex:pageBlockTable value="{!oppLst}" var="oppObj" >
+                        <apex:column headerValue="Name"> {!oppObj.Name}</apex:column>
+                        <apex:column value="{!oppObj.stagename}"></apex:column>
+                </apex:pageBlockTable>
+                    
+                    <apex:pageblockButtons >
+                        <apex:commandButton value="Search" action="{!searchOpp}"/>
+                        <apex:commandButton value="cancel" action="{!clearAll}"/>
+                    </apex:pageblockButtons>
+                    
+            </apex:pageblock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,66 @@
+<aura:component controller="Feb14AuraForAccountControllerHandler"
+                implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="accRecord" type="Account" />
+    <aura:attribute name="isModalOpen" type="Boolean" default="false" />
+    <aura:attribute name="isOppModalOpen" type="Boolean" default="false" />
+    <aura:attribute name="relatedOppData" type="List" />
+    <aura:if isTrue="{!v.isLoading}">
+        <lightning:spinner variant="brand" size="large" alternativeText="Loading" />
+    </aura:if>
+    <div class="slds-is-relative">
+        
+        <lightning:button label="Open Account Details" onclick="{!c.openModalHandler}" />
+        
+        <aura:if isTrue="{!v.isModalOpen}">
+            <lightning:card>
+                <div class="slds-p-around_small">
+                    <p><b>Name:</b> {!v.accRecord.Name}</p>
+                    <p><b>Phone:</b> {!v.accRecord.Phone}</p>
+                    <p><b>Industry:</b> {!v.accRecord.Industry}</p>
+                </div>
+            </lightning:card>
+            
+            <br />
+            
+            <lightning:button label="Show Opportunity List" onclick="{!c.openOppModalHandler}" />
+            
+            <aura:if isTrue="{!v.isOppModalOpen}">
+                <div>
+                    
+                    <p>Account Related Opportunity List</p>
+                    
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>StageName</th>
+                            <th>Amount</th>
+                            <th>CloseDate</th>
+                        </tr>
+                        
+                        <aura:iteration items="{!v.relatedOppData}" var="record">
+                            <tr>
+                                <td>{!record.Name}</td>
+                                <td>{!record.StageName}</td>
+                                <td>{!record.Amount}</td>
+                                <td>{!record.CloseDate}</td>
+                            </tr>
+                        </aura:iteration>
+                    </table>
+                </div>
+            </aura:if>
+            
+            <lightning:button label="Close Opportunity List" onclick="{!c.closeOppModalHandler}" />
+            
+        </aura:if>
+        <br/>
+        
+        <lightning:button label="Close Account Details" onclick="{!c.closeModalHandler}" />
+    </div>
+    
+    <div aura:id="changeIt">Change Me!</div><br />
+    <lightning:button onclick="{!c.applyCSS}" label="Add Style" />
+    <lightning:button onclick="{!c.removeCSS}" label="Remove Style" />
+    
+    
+</aura:component>

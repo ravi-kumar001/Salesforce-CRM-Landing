@@ -1,0 +1,42 @@
+<apex:page controller="EmailFileSelectorCtrl">
+<apex:form >
+
+<apex:pageBlock title="Select Files">
+
+<apex:commandButton value="Add Selected Files"
+    onclick="sendBack();return false;"/>
+
+<apex:pageBlockTable value="{!wrap}" var="w">
+
+    <apex:column width="5%">
+        <input type="checkbox" class="chk"/>
+        <input type="hidden" value="{!w.cv.Id}" class="verId"/>
+    </apex:column>
+
+    <apex:column headerValue="File Name">
+        {!w.cv.Title}.{!w.cv.FileExtension}
+    </apex:column>
+
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+
+<script>
+function sendBack(){
+ var ids='';
+ var chks=document.querySelectorAll('.chk');
+
+ for(var i=0;i<chks.length;i++){
+   if(chks[i].checked){
+     ids += chks[i].nextElementSibling.value + ',';
+   }
+ }
+
+ window.opener.location.href =
+ '/apex/SendEmailPage?ids={!$CurrentPage.parameters.ids}&files=' + ids;
+
+ window.close();
+}
+</script>
+</apex:page>

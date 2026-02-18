@@ -1,0 +1,94 @@
+<apex:page controller="Jan10VfpClass">
+    
+        <apex:pageBlock >
+            
+            <apex:form >
+            	 <apex:pageBlockSection title="Opportunity Operations" columns="2"> 
+                <apex:actionStatus id="spinner">
+                    <apex:facet name="start">
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: black;">
+                    &nbsp;
+                    </div>
+                    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 30% 50%">
+                    <img src="http://upload.wikimedia.org/wikipedia/commons/e/ed/Cursor_Windows_Vista.gif" />
+                    </div>
+                    </apex:facet>
+				</apex:actionStatus>
+                <apex:pageBlockSectionItem >
+                    Name : <apex:inputField value="{!newOpp.Name}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    Stage : <apex:inputField value="{!newOpp.StageName}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    Close Date : <apex:inputField value="{!newOpp.CloseDate}"/>
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    <apex:commandButton value="Create Opportunity"
+                        action="{!createOpp}"
+						status="spinner"
+                        reRender="oppTbl, oppForm"/>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            </apex:form>
+            
+            
+            <apex:form >
+           		 <apex:pageBlockTable value="{!oppWrapperList}" var="o" id="oppTbl">
+
+                <apex:column headerValue="Name">
+                    <apex:outputText value="{!o.opp.Name}" rendered="{!!o.isSelected}"/>
+                    <apex:inputField value="{!o.opp.Name}" rendered="{!o.isSelected}"/>
+                </apex:column>
+
+                <apex:column headerValue="Stage">
+                    <apex:outputText value="{!o.opp.StageName}" rendered="{!!o.isSelected}"/>
+                    <apex:inputField value="{!o.opp.StageName}" rendered="{!o.isSelected}"/>
+                </apex:column>
+
+                <apex:column headerValue="Close Date">
+                    <apex:outputText value="{!o.opp.CloseDate}" rendered="{!!o.isSelected}"/>
+                    <apex:inputField value="{!o.opp.CloseDate}" rendered="{!o.isSelected}"/>
+                </apex:column>
+
+                <apex:column headerValue="Action">
+                                <apex:commandButton value="Edit"
+                                    action="{!editOpp}"
+                                    reRender="oppTbl"
+                                    immediate="true"
+                                    rendered="{!!o.isSelected}"  status="spinner" >
+                                    <apex:param name="pid" value="{!o.opp.Id}" assignTo="{!selectedId}" />
+                                </apex:commandButton>
+ 
+                                <apex:commandButton value="Save"
+                                    action="{!saveOpp}"
+                                    reRender="oppTbl"
+                                    rendered="{!o.isSelected}" status="spinner">
+                                    <apex:param name="pid" value="{!o.opp.Id}" assignTo="{!selectedId}" />
+                                    
+                                 </apex:commandButton>
+                    
+
+                                <apex:commandButton value="Cancel"
+                                    action="{!cancelEdit}"
+                                    reRender="oppTbl"
+                                    rendered="{!o.isSelected}" status="spinner">
+									<apex:param name="pid" value="{!o.opp.Id}" assignTo="{!selectedId}" />
+                    			</apex:commandButton>
+
+                                <apex:commandButton value="Delete"
+                                    action="{!deleteOpp}"
+                                    reRender="oppTbl"
+                                    rendered="{!!o.isSelected}"
+                                    status="spinner">
+                                    <apex:param name="pid" value="{!o.opp.Id}" assignTo="{!selectedId}" />
+                                </apex:commandButton>
+
+					</apex:column>
+            </apex:pageBlockTable>
+		    </apex:form>
+        </apex:pageBlock>
+</apex:page>

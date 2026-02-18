@@ -1,0 +1,87 @@
+<apex:page controller="Jan13VfpClass">
+    
+    <apex:pageBlock >
+       <apex:actionStatus id="spinner">
+                    <apex:facet name="start">
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 1000; background-color: black;">
+                    &nbsp;
+                    </div>
+                    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 30% 50%">
+                    <img src="http://upload.wikimedia.org/wikipedia/commons/e/ed/Cursor_Windows_Vista.gif" />
+                    </div>
+                    </apex:facet>
+				</apex:actionStatus>
+        		<apex:form id="newOPP" >
+            	 <apex:pageBlockSection title="Opportunity Edit" columns="2"> 
+                <apex:pageBlockSectionItem >
+                  Opportunity  Name : <apex:inputField value="{!oppObj.Name}" />
+                </apex:pageBlockSectionItem>
+                     
+                <apex:pageBlockSectionItem >
+                    Stage : <apex:inputField value="{!oppObj.StageName}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                  Opportunity  Amount : <apex:inputField value="{!oppObj.Amount}" />
+                </apex:pageBlockSectionItem>
+
+                <apex:pageBlockSectionItem >
+                    Close Date : <apex:inputField value="{!oppObj.CloseDate}" />
+                </apex:pageBlockSectionItem>
+                     
+				<apex:pageBlockSectionItem >
+                    Account Name : <apex:inputField value="{!oppObj.AccountId}" />
+                </apex:pageBlockSectionItem>
+                     
+                <apex:pageBlockSectionItem >
+                    Probability : <apex:inputField value="{!oppObj.Probability}" />
+                </apex:pageBlockSectionItem>
+                     
+                <apex:pageBlockSectionItem >
+                    Total Opportunity : <apex:inputField value="{!oppObj.TotalOpportunityQuantity}"/>
+                </apex:pageBlockSectionItem>
+
+
+                <apex:pageBlockSectionItem >
+                    Lead Source : <apex:inputField value="{!oppObj.LeadSource}" required="false" />
+                </apex:pageBlockSectionItem>
+                     
+			<apex:commandButton value="Add Your Opportunity" action="{!finalAddOpp}" reRender="newOPP" status="spinner" />
+                     
+            </apex:pageBlockSection>
+       </apex:form>
+        
+        <apex:form >
+            	 <apex:pageBlockSection title="Contact Role" columns="2"> 
+                <apex:pageBlockSectionItem >
+                   Contact : <apex:inputField value="{!ocr.ContactId}"/>
+                </apex:pageBlockSectionItem>
+                     
+                <apex:pageBlockSectionItem >
+                    Role : <apex:inputField value="{!ocr.Role}"/>
+                </apex:pageBlockSectionItem>
+                     <apex:commandLink value="Add Contact Role"
+                        action="{!addConRole}" reRender="ocrTable" status="spinner"
+                        />
+            </apex:pageBlockSection>
+       </apex:form>
+        
+        <apex:pageBlockSection title="Selected Contact Role">
+        
+        	<apex:pageBlockTable value="{!contactLst}" var="o" id="ocrTable" >
+                
+                <apex:column headerValue="Name">
+                   <apex:outputField value="{!o.contactId}" />
+                </apex:column>
+                
+                <apex:column headerValue="Role">
+                    {!o.Role}
+                </apex:column>
+				
+            </apex:pageBlockTable>
+        
+        </apex:pageBlockSection>
+        
+    </apex:pageBlock>
+    
+</apex:page>

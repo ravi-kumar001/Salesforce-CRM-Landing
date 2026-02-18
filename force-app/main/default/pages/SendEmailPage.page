@@ -1,0 +1,87 @@
+<apex:page controller="SendEmailCtrl">
+    <apex:form >
+        <apex:pageBlock title="Email">
+            <apex:commandButton value="Send" action="{!send}"/>
+            <apex:commandButton value="Attach File" action="{!attachFile}" />
+            <apex:commandButton value="Close" onclick="parent.closeEmailFrameJS(); return false;" />
+
+            <br/><br/>
+
+            <b>To:</b><br/>
+            <apex:repeat value="{!toList}" var="t">
+                {!t}<br/>
+            </apex:repeat>
+
+            <br/>
+            <b>Subject:</b>
+            <apex:inputText value="{!subject}" style="width:100%"/>
+
+            <br/><br/>
+            <b>Body:</b>
+            <apex:inputTextarea value="{!body}" richText="true"
+                style="width:100%;height:150px"/>
+        </apex:pageBlock>
+
+<apex:outputPanel id="attachPanel">
+
+    <apex:outputPanel rendered="{!showAttachmentFrame}">
+        <div style="
+            position:fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+        ">
+            <div style="
+                width:70%;
+                margin:5% auto;
+                padding:15px;
+            ">
+
+                <apex:pageBlock title="Attachment">
+
+                    <apex:pageBlockButtons location="top">
+                        <apex:commandButton value="Save"
+                            action="{!addAllSelectedAttachments}"
+                            rerender="attachPanel,selectedFiles"/>
+
+                        <apex:commandButton value="Cancel"
+                            action="{!closeAttachPopup}"
+                            rerender="attachPanel"/>
+                    </apex:pageBlockButtons>
+
+                    <apex:pageBlockTable value="{!cvWrapper}" var="w">
+                        <apex:column >
+                            <apex:inputCheckbox value="{!w.isSelected}"/>
+                        </apex:column>
+
+                        <apex:column headerValue="File Name">
+                            {!w.cv.Title}.{!w.cv.FileExtension}
+                        </apex:column>
+
+                        <apex:column headerValue="Type">
+                            {!w.cv.FileType}
+                        </apex:column>
+
+                        <apex:column headerValue="Size">
+                            {!w.cv.ContentSize}
+                        </apex:column>
+                    </apex:pageBlockTable>
+
+                </apex:pageBlock>
+
+            </div>
+        </div>
+
+    </apex:outputPanel>
+
+</apex:outputPanel>
+
+        <apex:pageBlock title="Selected Attachments" id="selectedFiles">
+            <apex:pageBlockTable value="{!attachments}" var="a">
+                <apex:column headerValue="File Name">
+                    {!a.fileName}
+                </apex:column>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+
+    </apex:form>
+</apex:page>
