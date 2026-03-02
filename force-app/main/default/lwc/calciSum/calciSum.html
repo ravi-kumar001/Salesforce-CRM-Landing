@@ -1,0 +1,11 @@
+<template>
+    <c-number-input label="Enter First Number" oninputchange={handleInputChange}></c-number-input>
+    <c-number-input label="Enter Second Number" oninputchange={handleInputChange}></c-number-input>
+    <lightning-button label="+" onclick={calculateSum}></lightning-button>
+    <lightning-button label="-" onclick={calculateSub}></lightning-button>
+    <lightning-button label="X" onclick={calculateMul}></lightning-button>
+    <lightning-button label="/" onclick={calculateDiv}></lightning-button>
+    <div class="slds-m-around_medium">
+      <p>Result => {sum}</p>
+    </div>
+</template>
