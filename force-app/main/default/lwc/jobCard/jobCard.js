@@ -26,6 +26,10 @@ export default class JobCard extends LightningElement {
         return this.step === "2";
     }
 
+    get isStepThree() {
+        return this.step === "3";
+    }
+
     get isYes() {
         return this.hourMeter === 'YES';
     }
@@ -37,11 +41,15 @@ export default class JobCard extends LightningElement {
     handleNext() {
         if (this.step === "1") {
             this.step = "2";
+        } else if(this.step === '2') {
+            this.step = "3";
         }
     }
 
     handleBack() {
-        if (this.step === "2") {
+        if (this.step === "3") {
+            this.step = "2";
+        } else if(this.step === "2") {
             this.step = "1";
         }
     }

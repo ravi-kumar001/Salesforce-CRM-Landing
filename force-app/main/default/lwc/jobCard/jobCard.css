@@ -150,7 +150,7 @@
 }
 
 .form-section {
-    margin-top: 10px;
+    width: 80%;
 }
 
 .tyre-section {
@@ -161,4 +161,26 @@
     font-weight: 600;
     margin-bottom: 10px;
     color: #444;
+}
+
+
+.service-link {
+    color: #c23934;
+    font-size: 13px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.support-text {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.support-message {
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.repair-section {
+    margin-top: 20px;
 }

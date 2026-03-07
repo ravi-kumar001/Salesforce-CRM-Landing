@@ -186,7 +186,7 @@
                                 Tyre Pressure (PSI)
                             </div>
 
-                            <div class="slds-grid slds-wrap slds-gutters_large">
+                            <div class="slds-grid slds-wrap slds-gutters_large form-section">
 
                                 <div class="slds-col slds-size_1-of-4">
                                     <lightning-input label="Front Left" placeholder="PSI"></lightning-input>
@@ -209,6 +209,67 @@
                         </div>
 
                     </template>
+
+                </div>
+
+            </template>
+
+            <template if:true={isStepThree}>
+
+                <div class="identify-card">
+
+                    <h2 class="section-title">
+                        Service Details
+                        <span class="service-link">View Service History</span>
+                    </h2>
+
+                    <div class="form-grid">
+
+                        <lightning-input label="Product Status" value="PDI" disabled>
+                        </lightning-input>
+
+                        <lightning-input label="Job Card Type / Service Type" value="Product Quality" disabled>
+                        </lightning-input>
+
+                        <lightning-input label="Job Card Location" value="Workshop" disabled>
+                        </lightning-input>
+
+                    </div>
+
+
+                    <div class="support-text">
+                        ⚡ Supporting Text
+                    </div>
+
+                    <div class="support-message">
+                        The following checkpoint(s) were marked as "Not OK" during the PDI process.
+                        <span class="service-link">View PDI Report</span>
+                    </div>
+
+
+                    <lightning-datatable key-field="id" data={serviceCheckpoints} columns={columns}>
+                    </lightning-datatable>
+
+
+                    <div class="repair-section">
+
+                        <lightning-textarea label="Additional Repair Recommended" value={additionalRepair}
+                            onchange={handleRepairChange} placeholder="Enter recommended repairs or services">
+                        </lightning-textarea>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <lightning-input label="Service Estimate Amount" type="number" value={estimatedAmount}
+                            onchange={handleEstimateAmount} placeholder="Enter estimated amount">
+                        </lightning-input>
+
+                        <lightning-input label="Service Estimated Delivery Date & Time" type="datetime"
+                            value={deliveryDateTime} onchange={handleDeliveryDate}>
+                        </lightning-input>
+
+                    </div>
 
                 </div>
 
