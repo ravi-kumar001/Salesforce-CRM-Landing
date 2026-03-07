@@ -45,9 +45,48 @@
 
                         <div class="slds-col slds-size_1-of-3">
 
-                            <lightning-input type="search" label="* Tractor / Implement Chassis No."
-                                placeholder="Search Chassis Number" value={chassisNo} onchange={handleChassisChange}>
-                            </lightning-input>
+                            <div class="slds-form-element search-container">
+
+                                <label class="slds-form-element__label">
+                                    <span class="slds-required">*</span>
+                                    Tractor / Implement Chassis No.
+                                </label>
+
+                                <div class="slds-form-element__control">
+
+                                    <lightning-input type="search" variant="label-hidden"
+                                        placeholder="Search Chassis Number" value={chassisNo}
+                                        onchange={handleChassisChange}>
+                                    </lightning-input>
+
+                                </div>
+
+                                <template if:true={hasProducts}>
+
+                                    <div class="search-card has-result">
+
+                                        <template for:each={products} for:item="prod">
+
+                                            <div key={prod.Id} class="search-item" data-id={prod.Id}
+                                                onclick={handleSelectProduct}>
+
+                                                <div class="prod-name">
+                                                    {prod.PricebookEntry.Product2.Name}
+                                                </div>
+
+                                                <div class="prod-code">
+                                                    {prod.PricebookEntry.Product2.ProductCode}
+                                                </div>
+
+                                            </div>
+
+                                        </template>
+
+                                    </div>
+
+                                </template>
+
+                            </div>
 
                         </div>
 
@@ -73,63 +112,107 @@
 
                         <div class="slds-col slds-size_1-of-3">
 
-                            <lightning-input type="number" label="* Tractor Running Hours" value={runningHours}
-                                onchange={handleRunningHourChange}>
-                            </lightning-input>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">
+                                    <abbr class="slds-required">*</abbr>
+                                    Tractor Running Hours
+                                </label>
 
+                                <div class="slds-form-element__control">
+                                    <lightning-input type="number" variant="label-hidden" value={runningHours}
+                                        onchange={handleRunningHourChange}>
+                                    </lightning-input>
+                                </div>
+                            </div>
                         </div>
 
+
                     </div>
-
                 </div>
-
             </template>
-
 
             <template if:true={isStepTwo}>
 
-                <div class="identify-card">
+                <div class="step-card">
+                    <div class="tractor-header" onclick={toggleAccordion}>
 
-                    <h2 class="section-title">
-                        Tractor Details
-                    </h2>
+                        <div class="header-left">
 
-                    <div class="slds-grid slds-wrap slds-gutters_large">
+                            <lightning-icon icon-name={accordionIcon} size="x-small" class="accordion-icon">
+                            </lightning-icon>
 
-                        <div class="slds-col slds-size_1-of-4">
+                            <span class="tractor-title">
+                                Tractor Details
+                            </span>
 
-                            <lightning-input label="Tractor Chassis No." value={chassisNo} disabled>
-                            </lightning-input>
-
-                        </div>
-
-                        <div class="slds-col slds-size_1-of-4">
-
-                            <lightning-input label="Tractor Model" placeholder="Auto Populate">
-                            </lightning-input>
-
-                        </div>
-
-                        <div class="slds-col slds-size_1-of-4">
-
-                            <lightning-input label="Tractor Running Hours" value={runningHours}>
-                            </lightning-input>
-
-                        </div>
-
-                        <div class="slds-col slds-size_1-of-4">
-
-                            <lightning-combobox label="Fuel Indication" options={fuelOptions}>
-                            </lightning-combobox>
+                            <span class="status-badge">
+                                Product Status: PDI
+                            </span>
 
                         </div>
 
                     </div>
 
+                    <div class="header-divider"></div>
+                    <template if:true={isAccordionOpen}>
+
+                        <div class="slds-grid slds-wrap slds-gutters_large form-section">
+
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-input label="Tractor Chassis No." value={chassisNo} disabled>
+                                </lightning-input>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-input label="Tractor Model" value={tractorModel} disabled>
+                                </lightning-input>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-input label="Tractor Running Hours" value={runningHours} disabled>
+                                </lightning-input>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-combobox label="Fuel Indication" options={fuelOptions}>
+                                </lightning-combobox>
+                            </div>
+
+                        </div>
+
+                        <div class="tyre-section">
+
+                            <div class="tyre-title">
+                                Tyre Pressure (PSI)
+                            </div>
+
+                            <div class="slds-grid slds-wrap slds-gutters_large">
+
+                                <div class="slds-col slds-size_1-of-4">
+                                    <lightning-input label="Front Left" placeholder="PSI"></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-4">
+                                    <lightning-input label="Front Right" placeholder="PSI"></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-4">
+                                    <lightning-input label="Rear Left" placeholder="PSI"></lightning-input>
+                                </div>
+
+                                <div class="slds-col slds-size_1-of-4">
+                                    <lightning-input label="Rear Right" placeholder="PSI"></lightning-input>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </template>
+
                 </div>
 
             </template>
-
 
             <div class="footer">
                 <lightning-button label="Back" variant="neutral" onclick={handleBack}>

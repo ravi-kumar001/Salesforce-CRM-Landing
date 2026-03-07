@@ -38,13 +38,47 @@
     --slds-c-progress-indicator-color-border-completed: #ea001e;
 }
 
+.search-container {
+    position: relative;
+}
+
+.search-card {
+    position: absolute;
+    width: 100%;
+    background: white;
+    border-radius: 6px;
+    margin-top: 4px;
+    z-index: 10;
+}
+
+.search-card.has-result {
+    border: 1px solid #d8dde6;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.search-item {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.search-item:hover {
+    background: #f3f3f3;
+}
+
+.prod-name {
+    font-weight: 600;
+}
+
+.prod-code {
+    font-size: 12px;
+    color: #6b6b6b;
+}
+
 .custom-red-button {
     --slds-c-button-brand-color-background: red;
     --slds-c-button-brand-color-border: red;
     --slds-c-button-brand-color-background-hover: darkred;
 }
-
-
 
 .identify-card {
     border: 1px solid #d8dde6;
@@ -69,4 +103,62 @@
     justify-content: flex-end;
     gap: 10px;
     margin-top: 20px;
+}
+
+.step-card {
+    border: 1px solid #d8dde6;
+    border-radius: 10px;
+    padding: 20px;
+    background: white;
+}
+
+.tractor-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion-icon {
+    margin-right: 4px;
+}
+
+.tractor-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2e2e2e;
+}
+
+.status-badge {
+    background: #f3f3f3;
+    border: 1px solid #d8dde6;
+    border-radius: 14px;
+    padding: 3px 12px;
+    font-size: 12px;
+    color: #555;
+}
+
+.header-divider {
+    border-bottom: 1px solid #e5e5e5;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.form-section {
+    margin-top: 10px;
+}
+
+.tyre-section {
+    margin-top: 20px;
+}
+
+.tyre-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #444;
 }
