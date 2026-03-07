@@ -27,11 +27,12 @@
     border-bottom: 3px solid black;
 }
 
-.progressBar {
-    margin: 20px 0;
+.progress-wrapper{
+    width: 45%;
+    margin: 20px auto 30px auto;
 }
 
-.custom-progress {
+.custom-progress{
     --slds-c-progress-indicator-color-background-active: #ea001e;
     --slds-c-progress-indicator-color-border-active: #ea001e;
     --slds-c-progress-indicator-color-background-completed: #ea001e;
@@ -147,6 +148,10 @@
     border-bottom: 1px solid #e5e5e5;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.form-section1 {
+    width: 55%;
 }
 
 .form-section {
