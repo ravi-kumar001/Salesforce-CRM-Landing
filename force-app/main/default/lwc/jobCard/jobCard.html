@@ -17,21 +17,24 @@
 
             <div class="progress-wrapper">
 
-                <lightning-progress-indicator 
-                    current-step={step} 
-                    type="base"
-                    class="custom-progress">
+                <lightning-progress-indicator current-step={step} type="base" class="custom-progress">
 
-                    <lightning-progress-step label="Identify Product" value="1">
-                    </lightning-progress-step>
-
-                    <lightning-progress-step label="Product & Customer Details" value="2">
-                    </lightning-progress-step>
-
-                    <lightning-progress-step label="Service Details" value="3">
-                    </lightning-progress-step>
+                    <lightning-progress-step value="1"></lightning-progress-step>
+                    <lightning-progress-step value="2"></lightning-progress-step>
+                    <lightning-progress-step value="3"></lightning-progress-step>
 
                 </lightning-progress-indicator>
+                <div class="progress-labels">
+
+                    <div class="step-label">Identify Product</div>
+
+                    <div class="step-label">
+                        Product & Customer Details
+                    </div>
+
+                    <div class="step-label">Service Details</div>
+
+                </div>
 
             </div>
 
