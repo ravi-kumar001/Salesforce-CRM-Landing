@@ -1,0 +1,138 @@
+<template>
+    <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+        <div class="slds-scrollable_x">
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_fixed-layout">
+
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th style="width:40px;"></th>
+
+                        <th style="width:50px;"></th>
+
+                        <th scope="col" class="border-right">
+                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate">
+                                <span class="slds-truncate" title="Order Number">Order Number</span>
+                                <lightning-button-icon icon-name="utility:arrowup" variant="success"
+                                    class="slds-m-left_x-small" size="x-small">
+                                </lightning-button-icon>
+                            </div>
+                        </th>
+
+                        <th scope="col" class="border-right border-bottom" data-col="accountName" onmouseover={showIcon}
+                            onmouseout={hideIcon}>
+
+                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate">
+                                <span class="slds-truncate">Account Name</span>
+                                <template lwc:if={isAccountNameHover}>
+                                    <lightning-button-icon icon-name="utility:arrowup" variant="success"
+                                    class="slds-m-left_x-small" size="x-small">
+                                </lightning-button-icon>
+                                </template>
+                            </div>
+                        </th>
+
+                        <th scope="col" class="border-right" data-col="orderAmount" onmouseover={showIcon}
+                            onmouseout={hideIcon}>
+
+                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate">
+
+                                <span class="slds-truncate">Order Amount</span>
+
+                                <template lwc:if={isOrderAmountHover}>
+                                    <lightning-button-icon icon-name="utility:arrowup" variant="success"
+                                    class="slds-m-left_x-small" size="x-small">
+                                </lightning-button-icon>
+                                </template>
+
+                            </div>
+
+                        </th>
+
+                        <th scope="col" class="border-right" data-col="startDate" onmouseover={showIcon}
+                            onmouseout={hideIcon}>
+
+                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate">
+
+                                <span class="slds-truncate">Order Start Date</span>
+
+                                <template lwc:if={isStartDateHover}>
+                                    <lightning-button-icon icon-name="utility:arrowup" variant="success"
+                                    class="slds-m-left_x-small" size="x-small">
+                                </lightning-button-icon>
+                                </template>
+
+                            </div>
+
+                        </th>
+
+                        <th scope="col" class="border-right" data-col="status" onmouseover={showIcon}
+                            onmouseout={hideIcon}>
+
+                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate">
+
+                                <span class="slds-truncate">Status</span>
+
+                                <template lwc:if={isStatusHover}>
+                                    <lightning-button-icon icon-name="utility:arrowup" variant="success"
+                                    class="slds-m-left_x-small" size="x-small">
+                                </lightning-button-icon>
+                                </template>
+
+                            </div>
+
+                        </th>
+
+                        <th scope="col" class="border-right" data-col="contractNumber" onmouseover={showIcon}
+                            onmouseout={hideIcon}>
+
+                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate">
+
+                                <span class="slds-truncate">Contract Number</span>
+
+                                <template lwc:if={isContractHover}>
+                                    <lightning-button-icon icon-name="utility:arrowup" variant="success"
+                                    class="slds-m-left_x-small" size="x-small">
+                                </lightning-button-icon>
+                                </template>
+
+                            </div>
+
+                        </th>
+
+                        <th style="width:50px;"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <template for:each={computedOrders} for:item="order">
+                        <tr key={order.id}>
+
+                            <td class="slds-text-align_right slds-text-color_weak">
+                                {order.rowNumber}
+                            </td>
+
+                            <td>
+                                <lightning-input type="checkbox" variant="label-hidden"></lightning-input>
+                            </td>
+
+                            <td><a href="#">{order.OrderNumber}</a></td>
+                            <td><a href="#">{order.Account.Name}</a></td>
+                            <td>{order.TotalAmount}</td>
+                            <td>{order.EffectiveDate}</td>
+                            <td>{order.Status}</td>
+                            <td><a href="#">{order.Contract.ContractNumber}</a></td>
+
+                            <td>
+                                <lightning-button-icon icon-name="utility:down" variant="bare"
+                                    alternative-text="Actions">
+                                </lightning-button-icon>
+                            </td>
+
+                        </tr>
+                    </template>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</template>

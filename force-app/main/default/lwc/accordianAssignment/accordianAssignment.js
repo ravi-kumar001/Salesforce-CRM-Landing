@@ -1,4 +1,4 @@
-import { LightningElement, wire,track } from 'lwc';
+import { LightningElement, wire, track } from 'lwc';
 import getAccountWithContact from '@salesforce/apex/Feb28AccordianClass.getAccountWithContact';
 import deleteContact from '@salesforce/apex/Feb28AccordianClass.deleteContact';
 import { refreshApex } from '@salesforce/apex';

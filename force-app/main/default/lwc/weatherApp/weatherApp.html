@@ -1,0 +1,24 @@
+<template>
+    <lightning-card title="Weather App">
+
+        <div class="slds-p-around_medium">
+
+            <lightning-input 
+                label="Enter City"
+                onchange={handleCityChange}>
+            </lightning-input>
+
+            <lightning-button 
+                label="Get Weather"
+                onclick={getWeatherData}>
+            </lightning-button>
+
+            <template if:true={weather}>
+                <p>City: {weather.name}</p>
+                <p>Temperature: {weather.main.temp} °C</p>
+                <p>Weather: {weatherDescription}</p>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>

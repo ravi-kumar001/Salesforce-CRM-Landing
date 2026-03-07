@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Quotes" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <template if:true={quotes}>
+                <template for:each={quotes} for:item="q">
+                    <div key={q.id} class="slds-box slds-m-bottom_small">
+                        <p class="slds-text-heading_small">
+                            "{q.quote}"
+                        </p>
+                        <p class="slds-text-body_small slds-text-color_weak">
+                            <i>By {q.author}</i>
+                        </p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

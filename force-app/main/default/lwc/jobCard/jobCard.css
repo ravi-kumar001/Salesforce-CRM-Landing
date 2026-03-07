@@ -1,0 +1,72 @@
+.container {
+    padding: 20px;
+}
+
+.header {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 30px;
+    font-size: 16px;
+}
+
+.tab-item {
+    cursor: pointer;
+}
+
+.tab-item.inactive {
+    color: #8a8a8a;
+}
+
+.tab-item.active {
+    color: #1f1f1f;
+    font-weight: 600;
+    border-bottom: 3px solid black;
+}
+
+.progressBar {
+    margin: 20px 0;
+}
+
+.custom-progress {
+    --slds-c-progress-indicator-color-background-active: #ea001e;
+    --slds-c-progress-indicator-color-border-active: #ea001e;
+    --slds-c-progress-indicator-color-background-completed: #ea001e;
+    --slds-c-progress-indicator-color-border-completed: #ea001e;
+}
+
+.custom-red-button {
+    --slds-c-button-brand-color-background: red;
+    --slds-c-button-brand-color-border: red;
+    --slds-c-button-brand-color-background-hover: darkred;
+}
+
+
+
+.identify-card {
+    border: 1px solid #d8dde6;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}

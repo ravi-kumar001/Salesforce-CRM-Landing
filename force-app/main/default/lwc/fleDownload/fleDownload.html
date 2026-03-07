@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Record ID Example">
+        <p>The current record ID is: {recordId}</p>
+    </lightning-card>
+    <lightning-card title="File Download Example" icon-name="utility:download">
+        <div class="slds-m-around_medium">
+            <p>Click the button below to download all files.</p>
+            <lightning-button label="Download Files" onclick={handleDownload}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

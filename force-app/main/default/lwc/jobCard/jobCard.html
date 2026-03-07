@@ -1,0 +1,146 @@
+<template>
+    <lightning-card>
+
+        <div class="container">
+
+            <div class="header">
+                <div class="nav-tabs">
+                    <div class="tab-item inactive">
+                        Job Card List View
+                    </div>
+
+                    <div class="tab-item active">
+                        New Job Card
+                    </div>
+                </div>
+            </div>
+
+            <div class="progressBar">
+
+                <lightning-progress-indicator current-step={step} type="base" class="custom-progress">
+
+                    <lightning-progress-step label="Identify Product" value="1">
+                    </lightning-progress-step>
+
+                    <lightning-progress-step label="Product & Customer Details" value="2">
+                    </lightning-progress-step>
+
+                    <lightning-progress-step label="Service Details" value="3">
+                    </lightning-progress-step>
+
+                </lightning-progress-indicator>
+
+            </div>
+
+
+            <template if:true={isStepOne}>
+
+                <div class="identify-card">
+
+                    <h2 class="section-title">
+                        Identify Product
+                    </h2>
+
+                    <div class="slds-grid slds-wrap slds-gutters_large">
+
+                        <div class="slds-col slds-size_1-of-3">
+
+                            <lightning-input type="search" label="* Tractor / Implement Chassis No."
+                                placeholder="Search Chassis Number" value={chassisNo} onchange={handleChassisChange}>
+                            </lightning-input>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-3">
+
+                            <label class="slds-form-element__label">
+                                Hour Meter Working
+                            </label>
+
+                            <div class="radio-group">
+
+                                <lightning-input type="radio" label="YES" name="hourMeter" value="YES" checked={isYes}
+                                    onchange={handleHourMeter}>
+                                </lightning-input>
+
+                                <lightning-input type="radio" label="NO" name="hourMeter" value="NO" checked={isNo}
+                                    onchange={handleHourMeter}>
+                                </lightning-input>
+
+                            </div>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-3">
+
+                            <lightning-input type="number" label="* Tractor Running Hours" value={runningHours}
+                                onchange={handleRunningHourChange}>
+                            </lightning-input>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+
+            <template if:true={isStepTwo}>
+
+                <div class="identify-card">
+
+                    <h2 class="section-title">
+                        Tractor Details
+                    </h2>
+
+                    <div class="slds-grid slds-wrap slds-gutters_large">
+
+                        <div class="slds-col slds-size_1-of-4">
+
+                            <lightning-input label="Tractor Chassis No." value={chassisNo} disabled>
+                            </lightning-input>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-4">
+
+                            <lightning-input label="Tractor Model" placeholder="Auto Populate">
+                            </lightning-input>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-4">
+
+                            <lightning-input label="Tractor Running Hours" value={runningHours}>
+                            </lightning-input>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-4">
+
+                            <lightning-combobox label="Fuel Indication" options={fuelOptions}>
+                            </lightning-combobox>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </template>
+
+
+            <div class="footer">
+                <lightning-button label="Back" variant="neutral" onclick={handleBack}>
+                </lightning-button>
+
+                <lightning-button label="Next" variant="brand" onclick={handleNext} class="custom-red-button">
+                </lightning-button>
+
+            </div>
+
+        </div>
+
+    </lightning-card>
+</template>
