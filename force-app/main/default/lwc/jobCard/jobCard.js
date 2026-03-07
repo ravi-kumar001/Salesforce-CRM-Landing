@@ -92,14 +92,14 @@ export default class JobCard extends LightningElement {
 
     @track isAccordionOpen = true;
 
-get accordionIcon() {
-return this.isAccordionOpen
-? "utility:chevrondown"
-: "utility:chevronright";
-}
+    get accordionIcon() {
+        return this.isAccordionOpen
+            ? "utility:chevrondown"
+            : "utility:chevronright";
+    }
 
-toggleAccordion() {
-this.isAccordionOpen = !this.isAccordionOpen;
-}
+    toggleAccordion() {
+        this.isAccordionOpen = !this.isAccordionOpen;
+    }
 
 }
