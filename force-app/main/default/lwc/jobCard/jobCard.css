@@ -19,6 +19,14 @@ html {
     display: none;
 }
 
+.awdd-date {
+    display: none;
+}
+
+.operation-failure {
+    display: none;
+}
+
 .header {
     border-bottom: 1px solid #e5e5e5;
     margin-bottom: 20px;
@@ -247,6 +255,37 @@ html {
     min-height: 250px;
 }
 
+.view-history-banner {
+    padding: 12px 14px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.vhb-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vhb-left svg {
+    color: red;
+    flex-shrink: 0;
+}
+
+.vhb-title {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.vhb-sub {
+    font-size: 11px;
+    color: gray;
+    margin-top: 1px;
+}
+
 @media screen and (max-width: 768px) {
 
     .container {
@@ -422,9 +461,8 @@ html {
     }
 
     .service-history-card {
-        border: 1px solid #e60023;
+        border: 2px solid #e60023;
         border-radius: 8px;
-        padding: 12px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -495,6 +533,28 @@ html {
         display: none;
     }
 
+    .textarea-wrapper {
+        position: relative;
+    }
+
+    .verbatim-box {
+        width: 100%;
+        --slds-c-textarea-sizing-min-height: 120px;
+    }
+
+    .mic-icon {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        z-index: 10;
+
+        --slds-c-icon-color-foreground-default: #6b6b6b;
+    }
+
+    .view-history-banner {
+        display: flex;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 480px) {

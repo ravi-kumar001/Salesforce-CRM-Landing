@@ -226,7 +226,7 @@
                                 </lightning-input>
                             </div>
 
-                            <div class="slds-col slds-size_1-of-4">
+                            <div class="slds-col slds-size_1-of-4 awdd-date">
                                 <lightning-input label="AWDD Date" value={awddDate} disabled>
                                 </lightning-input>
                             </div>
@@ -241,7 +241,7 @@
                                 </lightning-combobox>
                             </div>
 
-                            <div class="slds-col slds-size_1-of-4">
+                            <div class="slds-col slds-size_1-of-4 operation-failure">
                                 <lightning-combobox label="Operation At Failure" options={failureOptions}>
                                 </lightning-combobox>
                             </div>
@@ -287,27 +287,27 @@
 
                 <div class="identify-card service-mobile">
 
-                    <!-- View Service History Card -->
-
                     <div class="service-history-card">
 
-                        <div class="history-left">
-
-                            <lightning-icon icon-name="utility:history" size="small"></lightning-icon>
-
-                            <div>
-                                <div class="history-title">View Service History</div>
-                                <div class="history-sub">Past service records</div>
+                        <div class="view-history-banner" id="vhBanner">
+                            <div class="vhb-left">
+                                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <div>
+                                    <div class="vhb-title">View Service History</div>
+                                    <div class="vhb-sub">Past service records</div>
+                                </div>
                             </div>
-
+                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                stroke-width="2.5" style="color:var(--gray-400)">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
                         </div>
 
-                        <lightning-icon icon-name="utility:chevronright" size="small"></lightning-icon>
-
                     </div>
-
-
-                    <!-- Service Details Section -->
 
                     <h2 class="section-title">
                         Service Details
@@ -316,39 +316,35 @@
                     <div class="divider"></div>
 
 
-                    <!-- Product Status -->
-
                     <div class="mobile-field">
-                        <label>Product Status</label>
-                        <div class="auto-field">Auto-Populate</div>
+                        <lightning-input label="Product Status" value="PDI" disabled>
+                        </lightning-input>
                         <div class="sub-text">Sixth Service</div>
                     </div>
 
-
-                    <!-- Job Card Type -->
 
                     <lightning-combobox label="Job Card Type / Service Type" placeholder="Select">
                     </lightning-combobox>
 
 
-                    <!-- Job Card Location -->
-
                     <lightning-combobox label="Job Card Location" placeholder="Select">
                     </lightning-combobox>
 
 
-                    <!-- Customer Verbatim -->
-
                     <div class="textarea-wrapper">
 
-                        <lightning-textarea label="Customer Verbatim" placeholder="Enter complaint">
-                        </lightning-textarea>
+                        <lightning-input type="text" class="text" label="Customer Verbatim"
+                            placeholder="Enter complaint">
+                        </lightning-input>
 
                         <lightning-icon icon-name="utility:mic" size="small" class="mic-icon">
                         </lightning-icon>
-
                     </div>
 
+                    <div>
+                        <lightning-textarea label="Additional Repair Recommended" placeholder="Enter complaint">
+                        </lightning-textarea>
+                    </div>
                 </div>
 
 
