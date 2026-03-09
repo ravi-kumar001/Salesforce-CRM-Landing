@@ -42,7 +42,6 @@
 
             </div>
 
-
             <template if:true={isStepOne}>
 
                 <div class="identify-card">
@@ -213,7 +212,6 @@
                     <div class="header-divider"></div>
                     <template if:true={isAccordionOpen}>
 
-
                         <div class="slds-grid slds-wrap slds-gutters_large form-section">
 
                             <div class="slds-col slds-size_1-of-4">
@@ -315,19 +313,16 @@
 
                     <div class="divider"></div>
 
-
                     <div class="mobile-field">
                         <lightning-input label="Product Status" value="PDI" disabled>
                         </lightning-input>
                         <div class="sub-text">Sixth Service</div>
                     </div>
 
-
-                    <lightning-combobox label="Job Card Type / Service Type" placeholder="Select">
+                    <lightning-combobox label="Job Card Type / Service Type" options={jobCardType}>
                     </lightning-combobox>
 
-
-                    <lightning-combobox label="Job Card Location" placeholder="Select">
+                    <lightning-combobox label="Job Card Location" options={jobCardLocation}>
                     </lightning-combobox>
 
 
@@ -346,8 +341,6 @@
                         </lightning-textarea>
                     </div>
                 </div>
-
-
 
                 <div class="identify-card step3-desktop">
 

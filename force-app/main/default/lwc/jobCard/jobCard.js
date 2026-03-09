@@ -7,7 +7,7 @@ export default class JobCard extends LightningElement {
 
     step = "1";
 
-    chassisNo = 'RFBW00525';
+    chassisNo = '';
     tractorModel = '';
     runningHours = 44;
     hourMeter = 'YES';
@@ -27,6 +27,21 @@ export default class JobCard extends LightningElement {
         { label: 'Select', value: '' },
         { label: 'Yes', value: 'yes' },
         { label: 'No', value: 'no' },
+    ];
+
+    jobCardType = [
+        { label: 'Select', value: '' },
+        { label: 'Product Quality', value: 'productQuality' },
+        { label: 'Product Repair', value: 'productRepair' },
+        { label: 'Product Replacement', value: 'productReplacement' },
+        { label: 'Product Service', value: 'productService' },
+        { label: 'Product Warranty', value: 'productWarranty' }
+    ];
+
+    jobCardLocation = [
+        { label: 'Select', value: '' },
+        { label: 'Workshop', value: 'workshop' },
+        { label: 'Field', value: 'field' }
     ];
 
     serviceCheckpoints = [
