@@ -213,6 +213,7 @@
                     <div class="header-divider"></div>
                     <template if:true={isAccordionOpen}>
 
+
                         <div class="slds-grid slds-wrap slds-gutters_large form-section">
 
                             <div class="slds-col slds-size_1-of-4">
@@ -226,12 +227,22 @@
                             </div>
 
                             <div class="slds-col slds-size_1-of-4">
+                                <lightning-input label="AWDD Date" value={awddDate} disabled>
+                                </lightning-input>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-4">
                                 <lightning-input label="Tractor Running Hours" value={runningHours} disabled>
                                 </lightning-input>
                             </div>
 
                             <div class="slds-col slds-size_1-of-4">
                                 <lightning-combobox label="Fuel Indication" options={fuelOptions}>
+                                </lightning-combobox>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-4">
+                                <lightning-combobox label="Operation At Failure" options={failureOptions}>
                                 </lightning-combobox>
                             </div>
 
@@ -273,7 +284,76 @@
 
             <template if:true={isStepThree}>
 
-                <div class="identify-card">
+
+                <div class="identify-card service-mobile">
+
+                    <!-- View Service History Card -->
+
+                    <div class="service-history-card">
+
+                        <div class="history-left">
+
+                            <lightning-icon icon-name="utility:history" size="small"></lightning-icon>
+
+                            <div>
+                                <div class="history-title">View Service History</div>
+                                <div class="history-sub">Past service records</div>
+                            </div>
+
+                        </div>
+
+                        <lightning-icon icon-name="utility:chevronright" size="small"></lightning-icon>
+
+                    </div>
+
+
+                    <!-- Service Details Section -->
+
+                    <h2 class="section-title">
+                        Service Details
+                    </h2>
+
+                    <div class="divider"></div>
+
+
+                    <!-- Product Status -->
+
+                    <div class="mobile-field">
+                        <label>Product Status</label>
+                        <div class="auto-field">Auto-Populate</div>
+                        <div class="sub-text">Sixth Service</div>
+                    </div>
+
+
+                    <!-- Job Card Type -->
+
+                    <lightning-combobox label="Job Card Type / Service Type" placeholder="Select">
+                    </lightning-combobox>
+
+
+                    <!-- Job Card Location -->
+
+                    <lightning-combobox label="Job Card Location" placeholder="Select">
+                    </lightning-combobox>
+
+
+                    <!-- Customer Verbatim -->
+
+                    <div class="textarea-wrapper">
+
+                        <lightning-textarea label="Customer Verbatim" placeholder="Enter complaint">
+                        </lightning-textarea>
+
+                        <lightning-icon icon-name="utility:mic" size="small" class="mic-icon">
+                        </lightning-icon>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="identify-card step3-desktop">
 
                     <h2 class="section-title">
                         Service Details

@@ -22,6 +22,12 @@ export default class JobCard extends LightningElement {
         { label: 'Medium', value: 'medium' },
         { label: 'Full', value: 'full' }
     ];
+    
+    failureOptions = [
+        { label: 'Select', value: '' },
+        { label: 'Yes', value: 'yes' },
+        { label: 'No', value: 'no' },
+    ];
 
     serviceCheckpoints = [
         {
