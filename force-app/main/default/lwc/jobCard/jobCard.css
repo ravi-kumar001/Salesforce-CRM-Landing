@@ -28,8 +28,18 @@
 }
 
 .progress-wrapper {
-    width: 45%;
+    width: 500px;
+    max-width: 100%;
     margin: 20px auto 30px auto;
+}
+
+.custom-progress {
+    width: 100%;
+}
+
+.identify-card,
+.step-card {
+    min-height: 300px;
 }
 
 .progress-labels {
@@ -214,4 +224,104 @@
 
 .repair-section {
     margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .progress-wrapper {
+        width: 100%;
+        margin: 10px 0 20px 0;
+    }
+
+    .progress-labels {
+        font-size: 11px;
+    }
+
+    .step-label {
+        width: auto;
+    }
+
+    .form-section1,
+    .form-section {
+        width: 100%;
+    }
+
+    .identify-card,
+    .step-card {
+        padding: 15px;
+    }
+
+    .slds-col.slds-size_1-of-3,
+    .slds-col.slds-size_1-of-4 {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .tyre-section .slds-col.slds-size_1-of-4 {
+        width: 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .tractor-title {
+        font-size: 16px;
+    }
+
+    .status-badge {
+        font-size: 11px;
+        padding: 2px 10px;
+    }
+
+    .radio-group {
+        gap: 10px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer lightning-button {
+        width: 100%;
+    }
+
+    .search-card {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .nav-tabs {
+        font-size: 14px;
+        gap: 15px;
+    }
+
+    .section-title {
+        font-size: 16px;
+    }
+
+    .tractor-title {
+        font-size: 15px;
+    }
+
+    .tyre-section .slds-col.slds-size_1-of-4 {
+        width: 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
 }

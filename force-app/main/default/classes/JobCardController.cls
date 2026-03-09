@@ -7,31 +7,12 @@ public with sharing class JobCardController {
     }
 
     @AuraEnabled
-    public static Id createJobCard(String chassisNo,String tractorModel,String runningHours,String hourMeter, String additionalRepair,Decimal estimatedAmount,Datetime deliveryDateTime){
+    public static Id createJobCard(String chassisNo,String tractorModel,Integer runningHours, String additionalRepair,Decimal estimatedAmount,Datetime deliveryDateTime){
         Job_Card__c job = new Job_Card__c();
 
         job.Chassis_Number__c = chassisNo;
         job.Tractor_Model__c = tractorModel;
-
-        String[] strTimeSplit = runningHours.split(':');
-
-        Time changeRunningHours = Time.newInstance(
-            Integer.valueOf(strTimeSplit[0]),
-            Integer.valueOf(strTimeSplit[1]),
-            0,
-            0 
-        );
-        job.Tractor_Running_Hours__c = changeRunningHours;
-
-        String[] hourTimeSplit = hourMeter.split(':');
-
-        Time hourMeterWorkingHours = Time.newInstance(
-            Integer.valueOf(hourTimeSplit[0]),
-            Integer.valueOf(hourTimeSplit[1]),
-            0,
-            0 
-        );
-        job.Hour_Meter_Working__c = hourMeterWorkingHours;
+        job.Tractor_Running_Hours__c = runningHours;
 
         job.Additional_Repair__c = additionalRepair;
         job.Service_Estimate_Amount__c = estimatedAmount;

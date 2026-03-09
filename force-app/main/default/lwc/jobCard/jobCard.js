@@ -9,7 +9,7 @@ export default class JobCard extends LightningElement {
 
     chassisNo = 'RFBW00525';
     tractorModel = '';
-    runningHours = '44';
+    runningHours = 44;
     hourMeter = 'YES';
 
     products = [];
