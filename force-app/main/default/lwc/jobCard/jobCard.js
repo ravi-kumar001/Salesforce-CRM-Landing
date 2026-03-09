@@ -164,6 +164,45 @@ export default class JobCard extends LightningElement {
         this.deliveryDateTime = event.target.value;
     }
 
+    hourMeterPreview;
+    chassisPreview;
+
+    openHourMeterUpload() {
+        this.template.querySelectorAll('.file-input')[0].click();
+    }
+
+    openChassisUpload() {
+        this.template.querySelectorAll('.file-input')[1].click();
+    }
+
+    handleHourMeterFile(event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                this.hourMeterPreview = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    handleChassisFile(event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                this.chassisPreview = reader.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
     saveJobCard() {
         createJobCard({
             chassisNo: this.chassisNo,

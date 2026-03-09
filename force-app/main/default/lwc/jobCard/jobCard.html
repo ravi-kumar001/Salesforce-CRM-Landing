@@ -1,7 +1,11 @@
 <template>
     <lightning-card>
 
-        <div class="container mobile-container">
+        <div class="mobile-header">
+            <span class="back-btn">←</span>
+            <span class="header-title">New Job Card</span>
+        </div>
+        <div class="container">
 
             <div class="header">
                 <div class="nav-tabs">
@@ -132,6 +136,53 @@
                             </div>
                         </div>
 
+                        <div class="slds-col slds-size_1-of-1 mobile-upload">
+
+                            <label class="slds-form-element__label">
+                                <abbr class="slds-required">*</abbr>
+                                Hour Meter Image
+                            </label>
+
+                            <div class="upload-box" onclick={openHourMeterUpload}>
+
+                                <template if:true={hourMeterPreview}>
+                                    <img src={hourMeterPreview} class="preview-image" />
+                                </template>
+
+                                <template if:false={hourMeterPreview}>
+                                    <lightning-icon icon-name="utility:photo" size="medium"></lightning-icon>
+                                    <div class="upload-text">Capture/Upload Image</div>
+                                </template>
+
+                                <input type="file" accept="image/*" class="file-input" onchange={handleHourMeterFile} />
+
+                            </div>
+
+                        </div>
+
+                        <div class="slds-col slds-size_1-of-1 mobile-upload">
+
+                            <label class="slds-form-element__label">
+                                <abbr class="slds-required">*</abbr>
+                                Chasis Image
+                            </label>
+
+                            <div class="upload-box" onclick={openChassisUpload}>
+
+                                <template if:true={chassisPreview}>
+                                    <img src={chassisPreview} class="preview-image" />
+                                </template>
+
+                                <template if:false={chassisPreview}>
+                                    <lightning-icon icon-name="utility:photo" size="medium"></lightning-icon>
+                                    <div class="upload-text">Capture/Upload Image</div>
+                                </template>
+
+                                <input type="file" accept="image/*" class="file-input" onchange={handleChassisFile} />
+
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>

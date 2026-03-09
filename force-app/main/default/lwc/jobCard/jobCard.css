@@ -1,5 +1,18 @@
 .container {
     padding: 20px;
+    min-height: 85vh;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+.mobile-header {
+    display: none;
+}
+
+.mobile-upload {
+    display: none;
 }
 
 .header {
@@ -31,15 +44,12 @@
     width: 500px;
     max-width: 100%;
     margin: 20px auto 30px auto;
+    min-height: 60px;
 }
 
 .custom-progress {
     width: 100%;
-}
-
-.identify-card,
-.step-card {
-    min-height: 300px;
+    min-height: 28px;
 }
 
 .progress-labels {
@@ -116,6 +126,7 @@
     border-radius: 10px;
     padding: 20px;
     background: #fff;
+    padding-top: 36px;
 }
 
 .section-title {
@@ -140,6 +151,7 @@
     border: 1px solid #d8dde6;
     border-radius: 10px;
     padding: 20px;
+    padding-top: 20px;
     background: white;
 }
 
@@ -226,6 +238,11 @@
     margin-top: 20px;
 }
 
+.identify-card,
+.step-card {
+    min-height: 250px;
+}
+
 @media screen and (max-width: 768px) {
 
     .container {
@@ -242,7 +259,10 @@
     }
 
     .step-label {
-        width: auto;
+        width: 33%;
+        font-size: 11px;
+        line-height: 1.2;
+        white-space: normal;
     }
 
     .form-section1,
@@ -300,8 +320,91 @@
         overflow-y: auto;
     }
 
-}
+    .progress-labels {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 6px;
+    }
 
+    .step-label {
+        width: 33%;
+        font-size: 11px;
+        line-height: 1.2;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .identify-card,
+    .step-card {
+        min-height: 300px;
+    }
+
+    .mobile-upload {
+        display: block;
+    }
+
+    .mobile-header {
+        display: flex;
+        background: linear-gradient(#1c1c1c, #000);
+        color: white;
+        height: 60px;
+        align-items: center;
+        padding: 0 16px;
+        border-bottom: 3px solid #e60023;
+        font-size: 18px;
+    }
+
+    .back-btn {
+        font-size: 22px;
+        margin-right: 15px;
+        cursor: pointer;
+    }
+
+    .header-title {
+        font-weight: 500;
+    }
+
+    .upload-label {
+        font-size: 14px;
+        font-weight: 500;
+        display: block;
+        margin-bottom: 6px;
+    }
+
+    .req {
+        color: red;
+    }
+
+    .upload-box {
+        border: 1px solid #d8dde6;
+        border-radius: 8px;
+        height: 90px;
+        background: #f7f7f7;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        cursor: pointer;
+        overflow:hidden;
+        position:relative;
+    }
+
+    .upload-box lightning-icon {
+        margin-bottom: 6px;
+    }
+
+    .upload-text {
+        font-size: 14px;
+        color: #6b6b6b;
+    }
+
+    .file-input {
+        display: none;
+    }
+}
 
 @media screen and (max-width: 480px) {
 
@@ -323,5 +426,37 @@
         flex: 0 0 100%;
         max-width: 100%;
     }
+}
 
+.upload-box {
+    border: 1px solid #d8dde6;
+    border-radius: 8px;
+    height: 95px;
+    background: white;
+    margin-top: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-box lightning-icon {
+    margin-bottom: 6px;
+    --slds-c-icon-color-foreground-default: #6b6b6b;
+}
+
+.upload-text {
+    font-size: 14px;
+    color: #6b6b6b;
+}
+
+.req {
+    color: red;
+}
+
+.preview-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:8px;
 }
