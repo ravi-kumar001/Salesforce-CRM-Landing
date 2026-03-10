@@ -22,7 +22,7 @@ export default class JobCard extends LightningElement {
         { label: 'Medium', value: 'medium' },
         { label: 'Full', value: 'full' }
     ];
-    
+
     failureOptions = [
         { label: 'Select', value: '' },
         { label: 'Yes', value: 'yes' },
@@ -43,6 +43,11 @@ export default class JobCard extends LightningElement {
         { label: 'Workshop', value: 'workshop' },
         { label: 'Field', value: 'field' }
     ];
+
+    isMobileView() {
+        const mobileFields = this.template.querySelector('.mobile-upload');
+        return mobileFields !== null;
+    }
 
     serviceCheckpoints = [
         {
@@ -84,15 +89,35 @@ export default class JobCard extends LightningElement {
     }
 
     handleNext() {
-        if (this.step === "1") {
-            this.step = "2";
 
-        } else if (this.step === "2") {
+        if (this.step === "1") {
+
+            if (!this.chassisNo || !this.runningHours) {
+                this.showError('Please fill all mandatory fields');
+                return;
+            }
+
+            const isMobile = window.innerWidth <= 768;
+
+            if (isMobile && (!this.hourMeterFileData || !this.chassisFileData)) {
+                this.showError('Please upload Hour Meter and Chassis Image');
+                return;
+            }
+
+            this.step = "2";
+        }
+
+        else if (this.step === "2") {
+
             this.step = "3";
             this.buttonLabelHandler();
 
-        } else if (this.step === "3") {
+        }
+
+        else if (this.step === "3") {
+
             this.saveJobCard();
+
         }
     }
 
@@ -187,23 +212,30 @@ export default class JobCard extends LightningElement {
 
     hourMeterPreview;
     chassisPreview;
+    hourMeterFileData;
+    chassisFileData;
 
     openHourMeterUpload() {
-        this.template.querySelectorAll('.file-input')[0].click();
+        this.template.querySelector('[data-id="hourMeter"]').click();
     }
 
     openChassisUpload() {
-        this.template.querySelectorAll('.file-input')[1].click();
+        this.template.querySelector('[data-id="chassis"]').click();
     }
 
     handleHourMeterFile(event) {
         const file = event.target.files[0];
 
         if (file) {
+
             const reader = new FileReader();
 
             reader.onload = () => {
+
+                let base64 = reader.result.split(',')[1];
+
                 this.hourMeterPreview = reader.result;
+                this.hourMeterFileData = base64;
             };
 
             reader.readAsDataURL(file);
@@ -211,28 +243,50 @@ export default class JobCard extends LightningElement {
     }
 
     handleChassisFile(event) {
+
         const file = event.target.files[0];
 
         if (file) {
+
             const reader = new FileReader();
 
             reader.onload = () => {
+
+                let base64 = reader.result.split(',')[1];
+
                 this.chassisPreview = reader.result;
+                this.chassisFileData = base64;
             };
 
             reader.readAsDataURL(file);
         }
     }
 
+    showError(message) {
+        this.dispatchEvent(
+            new ShowToastEvent({
+                title: 'Error',
+                message: message,
+                variant: 'error'
+            })
+        );
+    }
+
     saveJobCard() {
         createJobCard({
+
             chassisNo: this.chassisNo,
             tractorModel: this.tractorModel,
             runningHours: this.runningHours,
             hourMeter: this.hourMeter,
+
+            hourMeterImage: this.hourMeterFileData,
+            chassisImage: this.chassisFileData,
+
             additionalRepair: this.additionalRepair,
             estimatedAmount: this.estimatedAmount,
             deliveryDateTime: this.deliveryDateTime
+
         })
             .then(result => {
 

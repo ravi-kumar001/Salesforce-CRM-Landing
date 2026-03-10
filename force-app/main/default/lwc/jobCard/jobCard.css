@@ -136,9 +136,8 @@ html {
 .identify-card {
     border: 1px solid #d8dde6;
     border-radius: 10px;
-    padding: 20px;
     background: #fff;
-    padding-top: 36px;
+    padding-top: 10px;
 }
 
 .section-title {
@@ -315,7 +314,9 @@ html {
 
     .identify-card,
     .step-card {
-        padding: 15px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 
     .slds-col.slds-size_1-of-3,
@@ -433,6 +434,8 @@ html {
         cursor: pointer;
         overflow: hidden;
         position: relative;
+        
+        margin-bottom: 10px;
     }
 
     .upload-box lightning-icon {
